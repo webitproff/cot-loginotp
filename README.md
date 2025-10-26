@@ -1,4 +1,128 @@
+# Login OTP (2FA) — Email-Based Two-Factor Authentication
 
+**Plugin for CMF Cotonti Siena**  
+**Version:** `1.1.3`  
+**Date:** `2025-10-26`  
+**Author:** `webitproff`  
+**License:** `BSD`
+
+---
+
+## Description
+
+**Login OTP** is a **reliable and simple 2FA plugin** that adds a **second login step** using a **one-time password (OTP)** sent to the **user's email**.
+
+> **No Google Authenticator, no SMS, no extra dependencies.**  
+> Only **email + 5-digit code**.
+
+---
+
+## Features
+
+| Feature | Status |
+|--------|--------|
+| Two-factor authentication | Done |
+| OTP via email | Done |
+| Configurable OTP lifetime | Done |
+| Remember device (remember me) | Done |
+| Full localization (ru, en, uk) | Done |
+| Bootstrap 5.3 — stylish form | Done |
+| Secure redirect (base64 + URL validation) | Done |
+| Logging of logins/errors | Done |
+| Cleanup table after use | Done |
+
+---
+
+## Installation
+
+1. Unpack the archive into the folder:  
+   `plugins/loginotp/`
+2. Go to **Admin → Plugins → Login OTP → Install**
+3. Enable the plugin: **Enabled**
+4. Configure options (optional):  
+   **Admin → Plugins → Login OTP → Settings**
+
+---
+
+## Default Settings
+
+| Parameter | Value |
+|---------|--------|
+| `otp_lifetime` | `300` (5 minutes) |
+| `otp_length` | `5` digits |
+| `enabled` | `1` (enabled) |
+
+---
+
+## How it Works
+
+1. User enters **username + password**  
+2. If the password is correct → **OTP is generated**  
+3. The code is **sent via email**  
+4. User is redirected to `plug?e=loginotp`  
+5. User enters the **5-digit code**  
+6. If the code is correct → **login successful**  
+7. If the code is incorrect → **error + retry**
+
+> **Table `cot_loginotp` is temporary.**  
+> Entry lives **5 minutes** and **is deleted upon login**.
+
+---
+
+## File Structure
+
+```
+plugins/loginotp/
+├── loginotp.php                     ← Main standalone hooks
+├── loginotp.users.auth.check.php    ← Login interception
+├── loginotp.functions.php           ← OTP generation
+├── lang/
+│   ├── loginotp.ru.lang.php         ← Russian
+│   ├── loginotp.en.lang.php         ← English
+│   └── loginotp.uk.lang.php         ← Ukrainian
+└── tpl/
+    └── loginotp.tpl                 ← Template (Bootstrap 5.3)
+```
+
+---
+
+## Security
+
+- **base64 + filter_var** — protects redirect URLs from tampering  
+- **cot_import()** — validates all input data  
+- **Parameterized SQL queries** — protects from injection  
+- **OTP deleted after use**  
+- **Login attempts logged**
+
+---
+
+## Localization
+
+Supports **3 languages**:
+
+- **Russian** — `loginotp.ru.lang.php`  
+- **English** — `loginotp.en.lang.php`  
+- **Ukrainian** — `loginotp.uk.lang.php`
+
+> Cotonti automatically selects language based on `$usr['lang']`
+
+---
+
+## Support
+
+- Cotonti Siena v.0.9.26+  
+- PHP 8.4+  
+- MySQL 8.0+  
+
+---
+
+## License
+
+BSD License  
+Copyright (c) webitproff 2025
+
+
+___
 
 # Login OTP (2FA) — Двухфакторная аутентификация по email
 
