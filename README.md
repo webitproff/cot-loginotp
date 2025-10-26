@@ -7,6 +7,11 @@
 [![PHP](https://img.shields.io/badge/PHP-8.4-blueviolet.svg)](https://www.php.net/releases/8_4_0.php)
 [![MySQL](https://img.shields.io/badge/MySQL-8.0-blue.svg)](https://www.mysql.com/)
 
+
+<img width="454" height="592" alt="loginotp" src="https://github.com/user-attachments/assets/a039fb52-86e1-494e-b0d1-85f948249981" />
+
+
+
 **Plugin for CMF Cotonti Siena**  
 **Version:** `1.1.3`  
 **Date:** `2025-10-26`  
