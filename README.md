@@ -12,7 +12,7 @@
 
 
 
-**Plugin for CMF Cotonti Siena**  
+**Plugin for [CMF Cotonti Siena](https://github.com/Cotonti/Cotonti)**  
 **Version:** `1.1.3`  
 **Date:** `2025-10-26`  
 **Author:** `webitproff`  
